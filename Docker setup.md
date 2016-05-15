@@ -4,11 +4,11 @@
 
 ##__Docker:__
 
-*Tutorial on how to initailly setup docker can be found here: 
+*.Tutorial on how to initailly setup docker can be found here: 
 ..*Windows: (https://docs.docker.com/windows/)
 ..*Ubuntu: (https://docs.docker.com/engine/installation/linux/ubuntulinux/)
 
-*Step 1 of the installation requires enabling virtualization. I checked if my computer had it enabled in the task manager here (highlighted in green): *insert Pic*
+*.Step 1 of the installation requires enabling virtualization. I checked if my computer had it enabled in the task manager here (highlighted in green): *insert Pic*
 
 ..**(NB: This method of checking if Virtualization is enabled via Task Manager, can only done on Windows 8 and above. If running an older version of Windows, you have to run a special tool which is linked in the Docker installation guide. Luckily I am running Windows 10.)*
 
