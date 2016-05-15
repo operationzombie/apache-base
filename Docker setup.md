@@ -19,29 +19,29 @@
 
 * From here on, installing Docker was easy on my laptop.
 * However I had new problems with installing Docker on my desktop at home.
-..* After installation was complete and I ran the Docker Quickstart Terminal, I would get an error saying that “bash is missing”.
-..* My desktop has the Windows OS installed on an SSD and I installed Docker on my HDD which I use for storage.
-..* This error was fixed by installing Docker on my SSD, the same drive which Windows is installed on, which is the C drive. ALWAYS install on C drive.
+  * After installation was complete and I ran the Docker Quickstart Terminal, I would get an error saying that “bash is missing”.
+  * My desktop has the Windows OS installed on an SSD and I installed Docker on my HDD which I use for storage.
+  * This error was fixed by installing Docker on my SSD, the same drive which Windows is installed on, which is the C drive. ALWAYS install on C drive.
 
 ##Apache-Flask
 
 * Initially decided to use Node.js as the Framework but opted to go with Flask by Layne’s recommendation. Flask is a Python microframework for generating web pages. There are implementations already out there, meaning all we have to do is fork their repo and start sticking our code in. We are using Apache to serve the webpages in the docker image. We could have ran Flask directly but it would have been a lot less reliable than if we have a server handling things like concurrency etc.
 
 * Layne forked repo into project git from:
-..* (https://github.com/muneeb-ali/apache-flask)
+  * (https://github.com/muneeb-ali/apache-flask)
 * I forked repo from project git into my repo from:
-..* (https://github.com/operationzombie/apache-flask)
+  * (https://github.com/operationzombie/apache-flask)
 
 * Tried using the instructions on the gits readme to install flask and get it running but I could not progress from step 5:
-..* docker build -t=YOUR_TAG .
-..* This command just would not work for me. I didn’t know what “YOUR_TAG” meant so I spent hours googling and then trying different things in the command such as replacing it with “latest”, but had no success. I moved on to Ubuntu
-..* Same issues on Ubuntu
-..* The problem was you need to include the '.' at the end
+  * docker build -t=YOUR_TAG .
+  * This command just would not work for me. I didn’t know what “YOUR_TAG” meant so I spent hours googling and then trying different things in the command such as replacing it with “latest”, but had no success. I moved on to Ubuntu
+  * Same issues on Ubuntu
+  * The problem was you need to include the '.' at the end
 
 * Ran step 6 but I couldn’t view the test page so I couldn’t confirm if I had actually done it. 
-..* Tried viewing test page on http://localhost/ like the readme suggested with no success.
-..* Tried using http://localhost/80 because we were using port 80 but still no success and I was stumped.
-..* Callum comes in tells me that Docker uses its own ip, and the test page will be there.
-..* Tried 192.168.99.100 which is the ip for the Docker container and finally I have a test page that I can see.
+  * Tried viewing test page on http://localhost/ like the readme suggested with no success.
+  * Tried using http://localhost/80 because we were using port 80 but still no success and I was stumped.
+  * Callum comes in tells me that Docker uses its own ip, and the test page will be there.
+  * Tried 192.168.99.100 which is the ip for the Docker container and finally I have a test page that I can see.
 * 3 days later, we have successfully set up the tools to create our server.
-..* (Tuesday 10/5/16 - Thursday 12/5/16)
+  * (Tuesday 10/5/16 - Thursday 12/5/16)
