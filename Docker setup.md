@@ -45,3 +45,17 @@
   * Tried 192.168.99.100 which is the ip for the Docker container and finally I have a test page that I can see.
 * 3 days later, we have successfully set up the tools to create our server.
   * (Tuesday 10/5/16 - Thursday 12/5/16)
+
+##Making Changes
+When making changes to the website and restarting the server you need to follow these steps.
+* Edit the comment in the Dockerfile after the command RUN git clone …… to something different.
+* Commit and push changes to git repo
+* Re build docker image(include the full stop): docker build -t=YOUR_TAG .
+* Run the server: docker run -d -p 80:80 USERNAME/apache-flask
+
+###Making Changes Issue
+
+Every time I make a change and do all the steps above ^, it only seems to work when the master branch is changed. So if i’m working in a different branch i’m having to merge with the master to view the changes i’ve made otherwise i’ll continue to just see whatever is on master and not what i’m actually working on. NEED TO FIND A WORKAROUND TO THIS. Otherwise it ruins the point of branching if i’m merging untested code into master. Master should only ever have working code.
+
+Possible workarounds to this issue:
+* Fork my own repo and work on a master version of that (is that even possible?) then submit pull requests to my main apache repo. THEN submit another pull request to the opzombie repo. 
