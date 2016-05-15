@@ -63,7 +63,7 @@ p {
 	background-color:#4D4949;
 	border-top: 1px solid #4D4949;
 }
-
+/*
 #navigation {
 	background: #a5a5a5;
 	margin: 0;
@@ -75,6 +75,7 @@ p {
 	text-align: center;
 	position: relative;
 	}
+	*/
 
 #content{
 	background: #f1f1f1;
@@ -98,19 +99,21 @@ p {
 }
 
 #hr1 {
-	width:50%;
+	width:100%;
 	background: #DB3F3F;
 	border: none;
 	height: 2px;
+	text-align: center;
 	}
 	
 #hr2 {
-	width:40%;
+	width:100%;
 	background: #DB3F3F;
 	border: none;
 	height: 2px;
 	}
 	
+/*
 #hr3 {
 	width:30%;
 	background: #DB3F3F;
@@ -125,8 +128,8 @@ p {
 	height: 2px;
 	}
 
-/* NAVIGATION BAR */
-div.navdesignbar { /* black design at bottom of navigation */
+/* NAVIGATION BAR 
+div.navdesignbar { /* black design at bottom of navigation 
 	height: 10px;
 	background: #1a1109;
 	width: 100%;
@@ -154,7 +157,7 @@ ul.navdesign li a {
 	width: 100%;
 	}
 
-ul.navdesign li a:hover, ul.navdesign li a.selected { /*gradients compatible with a variety of web browsers*/
+ul.navdesign li a:hover, ul.navdesign li a.selected { /*gradients compatible with a variety of web browsers
 	color: #ffffff;
 	background: -moz-linear-gradient(top,  rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.16) 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.82)), color-stop(100%,rgba(255,255,255,0.16)));
