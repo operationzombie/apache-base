@@ -16,8 +16,8 @@ body {
 	}
 	
 h1 {
-	text-align:center;
-	font-size:405%; 
+	text-align: center;
+	font-size: 405%; 
 	font-family: Impact, sans-serif;
 	color: #CC9900/*#FFFFFF;*/;
 	margin-top: 20px;
@@ -26,7 +26,7 @@ h1 {
 	}
 	
 h2 {
-	text-align: justify;
+	text-align: left;
 	font-size: 310%; 
 	font-family: Impact, sans-serif;
 	color: #BB1212;
@@ -35,7 +35,7 @@ h2 {
 	}
 	
 h3 {
-	text-align: justify;
+	text-align: left;
 	font-size: 170%;
 	font-family: Impact, sans-serif;
 	color: #BB1212;
@@ -60,7 +60,7 @@ p {
 	width: auto;
 	font-family: Hobo STD;
 	color: #FFFFFF;
-	background-color:#4D4949;
+	background-color: #4D4949;
 	border-top: 1px solid #4D4949;
 }
 
