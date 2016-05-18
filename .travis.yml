@@ -13,10 +13,10 @@ before_install:
   - docker build -t oz_control:operation_zombie image/
 
 install:
-  - docker run -d -p 80:80 oz_control:operation_zombie
+  - docker run -d -p 80:80 --name ozc oz_control:operation_zombie 
 # command to run tests
 script: #nosetests
   - docker ps | grep -q oz_control
-  - docker exec oz_control python /srv/scripts/can_fetch_page.py http://localhost
+  - docker exec ozc python /srv/scripts/can_fetch_page.py http://localhost
 
 
