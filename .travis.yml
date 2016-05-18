@@ -19,6 +19,6 @@ script:
   - docker ps | grep -q oz_control
   - docker exec ozc python /srv/scripts/can_fetch_page.py http://localhost
 
-docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-
-docker push laynecsmall/opzom_control
+after_success:
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push laynecsmall/opzom_control
