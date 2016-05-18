@@ -1,6 +1,6 @@
 apache-flask
 ============
-
+[![Build Status](https://travis-ci.org/operationzombie/apache-flask.svg?branch=master)](https://travis-ci.org/operationzombie/apache-flask)
 Python Flask (web framework) deployed with Apache
 
 ### Quick Start (using Docker)
