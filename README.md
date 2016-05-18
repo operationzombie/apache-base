@@ -1,6 +1,7 @@
 apache-flask
 ============
-
+[![Build Status](https://travis-ci.org/laynecsmall/apache-flask.svg?branch=master)](https://travis-ci.org/laynecsmall/apache-flask)
+^ this needs to be changed to opzom at PR time 
 Python Flask (web framework) deployed with Apache
 
 ### Quick Start (using Docker)
