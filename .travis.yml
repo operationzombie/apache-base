@@ -10,13 +10,15 @@ services:
   - docker
 
 before_install:
-  - docker build -t oz_control:operation_zombie image/
+  - docker build -t laynecsmall/opzom_control image/
 
 install:
-  - docker run -d -p 80:80 --name ozc oz_control:operation_zombie 
+  - docker run -d -p 80:80 --name ozc laynecsmall/opzom_control
 # command to run tests
-script: #nosetests
+script: 
   - docker ps | grep -q oz_control
   - docker exec ozc python /srv/scripts/can_fetch_page.py http://localhost
 
+docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 
+docker push laynecsmall/opzom_control
