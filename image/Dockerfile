@@ -31,6 +31,9 @@ RUN apt-get install -y \
 
 # Create the default directory
 RUN mkdir -p /srv/www
+RUN mkdir -p /srv/scripts
+
+ADD image_scripts/ /srv/scripts
 
 # Clone the app from github and install packages
 RUN git clone https://github.com/muneeb-ali/apache-flask.git /srv/www/app

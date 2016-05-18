@@ -23,5 +23,6 @@ install:
 # command to run tests
 script: #nosetests
   - docker ps | grep -q oz_control
+  - docker exec oz_control python /srv/scripts/can_fetch_page.py http://localhost
 
 
