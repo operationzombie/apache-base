@@ -10,7 +10,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t oz_control:operation_zombie images/
+  - docker build -t oz_control:operation_zombie image/
 
 install:
   - docker run -d -p 80:80 oz_control:operation_zombie
