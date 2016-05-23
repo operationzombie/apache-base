@@ -4,12 +4,12 @@
 	:author: Muneeb Ali | http://muneebali.com
 	:license: MIT, see LICENSE for more details.
 """
-
+'''
 import time
 import serial
-
+'''
 from flask import Flask, make_response, render_template, jsonify
-
+'''
 ser = serial.Serial(
     port='/dev/ttyUSB1',
     baudrate=9600,
@@ -18,7 +18,7 @@ ser = serial.Serial(
     bytesize=serial.SEVENBITS
 )
 ser.isOpen()
-
+'''
 
 
 
