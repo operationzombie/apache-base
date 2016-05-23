@@ -29,6 +29,36 @@ from commontools import log
 #-----------------------------------
 @app.route('/')
 def index():
+	return render_template('index.html')
+	
+#-----------------------------------
+@app.route("/", method=("POST",))
+def handle_data():
+    return "Hello World - you sent me " + str(request.values)
+	
+#-----------------------------------
+@app.route('/port/<port>')
+def port(port):
+	return render_template('port.html', port=port)
+
+#-----------------------------------
+@app.errorhandler(500)
+def internal_error(error):
+
+	reply = []
+	return jsonify(reply)
+
+#-----------------------------------
+@app.errorhandler(404)
+def not_found(error):
+	return make_response(jsonify( { 'error': 'Not found' } ), 404)
+	
+	
+	
+	
+	
+	
+"""
 	print 'Enter your commands below.\r\nInsert "exit" to leave the application.'
 
 	input=1
@@ -50,21 +80,4 @@ def index():
 
 			if out != '':
 				print ">>" + out
-	return render_template('index.html')
-	
-#-----------------------------------
-@app.route("/", method=("POST",))
-def handle_data():
-    return "Hello World - you sent me " + str(request.values)
-
-#-----------------------------------
-@app.errorhandler(500)
-def internal_error(error):
-
-	reply = []
-	return jsonify(reply)
-
-#-----------------------------------
-@app.errorhandler(404)
-def not_found(error):
-	return make_response(jsonify( { 'error': 'Not found' } ), 404)
+"""
