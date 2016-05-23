@@ -15,6 +15,11 @@ from commontools import log
 @app.route('/')
 def index():
 	return render_template('index.html')
+	
+#-----------------------------------
+@app.route('port')
+def port():
+	return render_template(port.html)
 
 #-----------------------------------
 @app.errorhandler(500)
