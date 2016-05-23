@@ -17,7 +17,7 @@ def index():
 	return render_template('index.html')
 	
 #-----------------------------------
-@app.route('port')
+@app.route('/port')
 def port():
 	return render_template(port.html)
 
