@@ -8,7 +8,7 @@
 from flask import Flask, make_response, render_template, jsonify
 
 app = Flask(__name__)
-
+#reset
 from commontools import log
 
 #-----------------------------------
