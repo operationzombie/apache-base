@@ -10,10 +10,20 @@ from flask import Flask, make_response, render_template, jsonify
 app = Flask(__name__)
 
 from commontools import log
-
+import serial, time
 #-----------------------------------
-@app.route('/')
-def index():
+app.route('/')#, methods=['POST', 'GET'])
+def index():	
+	"""if request.method == 'POST':
+		if request.form['submit'] == 'Do Something':
+			print('\n')
+			print '***************** PING MITEN ******************'
+			print('\n')
+			ser = serial.Serial('COM1')
+			ser.write('MITEN')
+		else:
+			pass # unknown
+	elif request.method == 'GET':"""
 	return render_template('index.html')
 
 #-----------------------------------
