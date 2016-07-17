@@ -8,14 +8,14 @@
 from flask import Flask, make_response, render_template, jsonify
 
 app = Flask(__name__)
-#reset
+
 from commontools import log
 
 #-----------------------------------
 @app.route('/')
 def index():
 	return render_template('index.html')
-	
+
 #-----------------------------------
 @app.errorhandler(500)
 def internal_error(error):
