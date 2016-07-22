@@ -6,7 +6,6 @@
 """
 
 from flask import Flask, make_response, render_template, jsonify
-from flask import request
 
 app = Flask(__name__)
 
@@ -29,7 +28,8 @@ def internal_error(error):
 def not_found(error):
 	return make_response(jsonify( { 'error': 'Not found' } ), 404)
 
-def index():
+
+def index():	
 	return render_template('index.html')
 	
 

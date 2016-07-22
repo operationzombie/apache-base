@@ -27,7 +27,8 @@ RUN apt-get install -y \
 	apache2-utils \
 	libapache2-mod-wsgi \
 	git \
-	python-pip
+	python-pip \
+	vim
 
 # Create the default directory
 RUN mkdir -p /srv/www
