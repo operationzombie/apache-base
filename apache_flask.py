@@ -13,7 +13,7 @@ app = Flask(__name__)
 from commontools import log
 import serial, time
 
-#-----------------------------------
+#------------------------------------
 @app.route('/', methods=['POST', 'GET'])
 def index():
 	if request.method == 'POST':
