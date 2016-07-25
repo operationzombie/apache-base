@@ -26,15 +26,15 @@
 		<div id="content">
 			<h2> Heading </h2>
 				<p> Content </p>
-				<div class="btn-group" role="group">
-					<!--<a href="/connect" role="button"  class="btn btn-default">Connect</button>-->
-					<button type="button" class="btn btn-default" onclick="connect()">Connect</button>
-					<script>
-					function connect() {
-						alert("Connect button pressed.");
-					}
-					</script>
-				</div> <!--close btn-group-->
+				<form method="POST">
+                	<input type="submit" name="submit" value="Ping">
+            	</form>
+            	<form method="POST">
+                	<input type="submit" name="submit" value="Pong">
+            	</form>
+            	<form method="POST">
+                	<input type="submit" name="submit" value="Ping-Pong">
+            	</form>
 		</div> <!--close content-->
 		<div class="footer">
 			<p class="footer">Developed by the Zombie Animatronics Team.</p>
