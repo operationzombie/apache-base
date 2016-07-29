@@ -44,7 +44,7 @@ RUN pip install -r /srv/www/app/requirements.txt
 
 # Expose the default port
 EXPOSE 80
-EXPOSE 5000
+EXPOSE 8082
 
 # Set default container command
 ENTRYPOINT /usr/sbin/apache2ctl -D FOREGROUND
