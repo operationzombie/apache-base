@@ -43,7 +43,7 @@ def index():
        		ser.write('PING')
         	recievedText = ser.read(4)
         	print recievedText
-        	return render_template('index.html')
+        	return 'PING PONG'
     elif request.method == 'GET':
         return render_template('index.html')
 
