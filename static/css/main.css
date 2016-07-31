@@ -22,22 +22,44 @@ p {
 	}
 
 .container{
-	background: #000000;
+	background: #ffffff;
 	border: 1px solid #000;
+	width: auto;
 }
 
-#header{
+.header {
 	padding-top: 10px;
 	font-family: Hobo STD;
 	color: #FFFFFF;
 	background-color: #4D4949;
 	border-top: 1px solid #4D4949;
+	
+}
+
+.navbar-inner {
+	color: #4D4949;
+}
+
+.brand {
+	font-family: Hobo STD;
+	font-size: 405%;
+	color: #FFFFFF;
 }
 
 #content{
 	background: #f1f1f1;
-	padding: 10px 38px 10px 40px;
-	border-top: 1px solid #f1f1f1;
+	float: left;
+	width: 50%;
+	margin-left: 15%;
+	margin-right: auto;
+}
+
+#rightPanel{
+	background: #000000;
+	float: left;
+	width: 20%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .footer{
@@ -57,4 +79,5 @@ p {
 	height: 2px;
 	text-align: center;
 	}
+
 
