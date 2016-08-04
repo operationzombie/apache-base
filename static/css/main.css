@@ -1,83 +1,84 @@
-h1 {
-	text-align: center;
-	font-size: 405%; 
-	font-style: italic;
-	}
-	
-h2 {
-	text-align: left;
-	font-size: 310%; 
-	color: #000000;
-	}
-	
-h3 {
-	text-align: left;
-	font-size: 170%;
-	color: #ffffff;
-	font-style: italic;
-}
-	
-p {
-	text-align: left;
-	}
-
-.container{
-	background: #ffffff;
-	border: 1px solid #000;
-	width: auto;
+body {
+    background-color: #f8f8f8;
 }
 
-.header {
-	padding-top: 10px;
-	font-family: Hobo STD;
-	color: #FFFFFF;
-	background-color: #4D4949;
-	border-top: 1px solid #4D4949;
-	
+#wrapper {
+    width: 100%;
 }
 
-.navbar-inner {
-	color: #4D4949;
+#page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: #fff;
 }
 
-.brand {
-	font-family: Hobo STD;
-	font-size: 405%;
-	color: #FFFFFF;
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 0 30px;
+        border-left: 1px solid #e7e7e7;
+    }
 }
 
-#content{
-	background: #f1f1f1;
-	float: left;
-	width: 50%;
-	margin-left: 15%;
-	margin-right: auto;
+.navbar-top-links {
+    margin-right: 0;
 }
 
-#rightPanel{
-	background: #000000;
-	float: left;
-	width: 20%;
-	margin-left: auto;
-	margin-right: auto;
+.navbar-top-links li {
+    display: inline-block;
 }
 
-.footer{
-	clear: both;
-	padding: 4px 20px;
-	color: #BBB;
-	font-size: 85%;
-	text-align: center;
-	background-color: #333;
-	border-top: 1px solid #333;
+.navbar-top-links li:last-child {
+    margin-right: 15px;
 }
 
-#hr1 {
-	width:100%;
-	background: #DB3F3F;
-	border: none;
-	height: 2px;
-	text-align: center;
-	}
+.navbar-top-links li a {
+    padding: 15px;
+    min-height: 50px;
+}
 
+.navbar-top-links .dropdown-menu li {
+    display: block;
+}
 
+.navbar-top-links .dropdown-menu li:last-child {
+    margin-right: 0;
+}
+
+.navbar-top-links .dropdown-menu li a {
+    padding: 3px 20px;
+    min-height: 0;
+}
+
+.navbar-top-links .dropdown-menu li a div {
+    white-space: normal;
+}
+
+.navbar-top-links .dropdown-user {
+    right: 0;
+    left: auto;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.sidebar ul li a.active {
+    background-color: #eee;
+}
+
+@media(min-width:768px) {
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 250px;
+        margin-top: 51px;
+    }
+
+    .navbar-top-links .dropdown-messages,
+    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-alerts {
+        margin-left: auto;
+    }
+}
