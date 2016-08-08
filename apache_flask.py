@@ -16,7 +16,7 @@ from commontools import log
 #Setup listen socket
 HOST = ''                 # Symbolic name meaning all available interfaces
 PORT = 8082              # Arbitrary non-privileged port
-lisconn = None
+conn = None
 adr = None
 
 #Setup sending socket
@@ -33,26 +33,36 @@ def index():
 			print('\n')
 			print '***************** SETUP ******************'
 			print('\n')
-			listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			listener.bind((HOST, PORT))
-			listener.listen(1)
-			lisconn, adr = listener.accept()
-			while not lisconn:
-				lisconn, adr = listener.accept()
+			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			s.bind((HOST, PORT))
+			s.listen(1)
+			conn, adr = s.accept()
+			while not conn:
+				conn, adr = s.accept()
 			#sender.sendall('PING')
 			return 'setup port Connected by :', adr #render_template('index.html')
 		if request.form['submit'] == 'Ping':
 			print('\n')
 			print '***************** PINGING ******************'
 			print('\n')
+			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			s.bind((HOST, PORT))
+			s.listen(1)
+			conn, adr = s.accept()
+			conn.sendall('PING')
 			#sender.sendall('PING')
+			conn.close()
 			return render_template('index.html')
 		elif request.form['submit'] == 'Pong':
 			print('\n')
 			print '***************** WAITING FOR DATA ******************'
 			print('\n')
+			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			s.bind((HOST, PORT))
+			s.listen(1)
+			conn, adr = s.accept()
 			while True :
-				data = lisconn.recv(1024)
+				data = conn.recv(1024)
 				if data:
 					return data
 		elif request.form['submit'] == 'Ping-Pong':
@@ -60,18 +70,20 @@ def index():
 			print '***************** Ping-Pong ******************'
 			print('\n')
 			print 'WRITE PING'
-			if(not lisconn):
-				return render_template('index.html')
-			#sender.sendall('PING')
-			lisconn.sendall('PING')
+			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			s.bind((HOST, PORT))
+			s.listen(1)
+			conn, adr = s.accept()
+			conn.sendall('PING')
 			while 1:
-				data = lisconn.recv(1024)
+				data = conn.recv(1024)
 				if data == 'PONG':
+					conn.close()
 					return data
 			print 'NO PING PONG'
 			return 'NO PING PONG'
 	elif request.method == 'GET':
-		return render_template('index.html')
+		return 'Test return' #render_template('index.html')
 
 #-----------------------------------
 @app.errorhandler(500)
