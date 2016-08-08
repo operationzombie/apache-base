@@ -40,7 +40,7 @@ def index():
 			while not conn:
 				conn, adr = s.accept()
 			#sender.sendall('PING')
-			return 'setup port Connected by :', adr #render_template('index.html')
+			return render_template('index.html')
 		if request.form['submit'] == 'Ping':
 			print('\n')
 			print '***************** PINGING ******************'
@@ -50,6 +50,7 @@ def index():
 			s.listen(1)
 			conn, adr = s.accept()
 			conn.sendall('PING')
+			conn.recv(1024)
 			#sender.sendall('PING')
 			conn.close()
 			return render_template('index.html')
@@ -75,13 +76,13 @@ def index():
 			s.listen(1)
 			conn, adr = s.accept()
 			conn.sendall('PING')
-			while 1:
+			data = None
+			while data != 'PONG':
 				data = conn.recv(1024)
 				if data == 'PONG':
 					conn.close()
-					return data
-			print 'NO PING PONG'
-			return 'NO PING PONG'
+			print 'PING PONG'
+			return render_template('index.html')
 	elif request.method == 'GET':
 		return render_template('index.html')
 
