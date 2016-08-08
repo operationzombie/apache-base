@@ -83,7 +83,7 @@ def index():
 			print 'NO PING PONG'
 			return 'NO PING PONG'
 	elif request.method == 'GET':
-		return 'Test return' #render_template('index.html')
+		return render_template('index.html')
 
 #-----------------------------------
 @app.errorhandler(500)
