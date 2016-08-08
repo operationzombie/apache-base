@@ -16,12 +16,8 @@ from commontools import log
 #Setup listen socket
 HOST = ''                 # Symbolic name meaning all available interfaces
 PORT = 8082              # Arbitrary non-privileged port
-listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-listener.bind((HOST, PORT))
-listener.listen(1)
-lisconn, adr = listener.accept()
-while not lisconn:
-	lisconn, adr = listener.accept()
+lisconn = None
+adr = None
 
 #Setup sending socket
 #HOST = '0.0.0.0'    # The remote host
@@ -33,6 +29,18 @@ while not lisconn:
 @app.route('/', methods=['POST', 'GET'])
 def index():    
 	if request.method == 'POST':
+		if request.form['submit'] == 'Setup':
+			print('\n')
+			print '***************** SETUP ******************'
+			print('\n')
+			listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			listener.bind((HOST, PORT))
+			listener.listen(1)
+			lisconn, adr = listener.accept()
+			while not lisconn:
+				lisconn, adr = listener.accept()
+			#sender.sendall('PING')
+			return 'setup port Connected by :', adr #render_template('index.html')
 		if request.form['submit'] == 'Ping':
 			print('\n')
 			print '***************** PINGING ******************'
@@ -52,13 +60,16 @@ def index():
 			print '***************** Ping-Pong ******************'
 			print('\n')
 			print 'WRITE PING'
+			if(not lisconn):
+				return render_template('index.html')
 			#sender.sendall('PING')
+			lisconn.sendall('PING')
 			while 1:
 				data = lisconn.recv(1024)
-				if data:
+				if data == 'PONG':
 					return data
-			print recievedText
-			return 'PING PONG'
+			print 'NO PING PONG'
+			return 'NO PING PONG'
 	elif request.method == 'GET':
 		return render_template('index.html')
 
