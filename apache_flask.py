@@ -81,6 +81,7 @@ def index():
 				data = conn.recv(1024)
 				if data == 'PONG':
 					conn.close()
+					return data
 			print 'PING PONG'
 			return render_template('index.html')
 	elif request.method == 'GET':
