@@ -10,13 +10,11 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
 
         // create an array with nodes and sensors
         nodesBaseArray = [
-            {id: 1, label: 'Node 1'},
-			{id: 2, label: 'Node 2'}
+            {id: 1, label: 'Elsa'}
         ];
 		sensorBaseArray = [
-			{id: 1001, label: 'Sensor 1'},
-			{id: 1002, label: 'Sensor 2'},
-			{id: 1003, label: 'Sensor 3'}
+			{id: 1001, label: 'Belle'},
+			{id: 1002, label: 'Aurora'}
 		]
         nodes = new vis.DataSet(nodesBaseArray);
 		nodes.add(sensorBaseArray);
@@ -24,8 +22,7 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
         // create an array with edges
         edgesArray = [
             {from: 1, to: 1001},
-            {from: 2, to: 1002},
-			{from: 2, to: 1003}
+            {from: 2, to: 1002}
         ];
         edges = new vis.DataSet(edgesArray);
 

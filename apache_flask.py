@@ -12,6 +12,7 @@ import serial, socket
 app = Flask(__name__)
 
 from commontools import log
+import serial, time
 
 #Setup listen socket
 HOST = ''                 # Symbolic name meaning all available interfaces
