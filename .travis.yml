@@ -26,5 +26,6 @@ after_success:
 notifications:
   slack:
     rooms:
-      - undeadbaby:$SLACK_KEY#random
-    on_failure: change
+    - undeadbaby:sOVrai0yjsQvDj9KBMXso9Pz#random
+    on_success: change
+    on_failure: always
