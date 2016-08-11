@@ -27,8 +27,7 @@ RUN apt-get install -y \
 	apache2-utils \
 	libapache2-mod-wsgi \
 	git \
-	python-pip \
-	vim
+	python-pip
 
 # Create the default directory
 RUN mkdir -p /srv/www
@@ -37,7 +36,7 @@ RUN mkdir -p /srv/scripts
 ADD image_scripts/ /srv/scripts
 
 # Clone the app from github and install packages
-RUN git clone https://github.com/mcking49/apache-flask.git --branch layout --single-branch /srv/www/app #newdesign
+RUN git clone https://github.com/mcking49/apache-flask.git --branch layout --single-branch /srv/www/app #vis
 RUN cp -f /srv/www/app/apache/config/default.conf /etc/apache2/sites-available/000-default.conf
 RUN pip install -r /srv/www/app/requirements.txt 
 
