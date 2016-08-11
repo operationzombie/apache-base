@@ -82,3 +82,25 @@ body {
         margin-left: auto;
     }
 }
+#setup{
+    background-color: dodgerblue;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 4px;
+}
+
+#pingpong{
+    background-color: darkgoldenrod;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+}
+
+form{
+    display: inline;
+    margin: auto;
+}
