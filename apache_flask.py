@@ -15,16 +15,7 @@ import serial, time
 #------------------------------------
 @app.route('/', methods=['POST', 'GET'])
 def index():
-	if request.method == 'POST':
-		if request.form['submit'] == 'Ping':
-			print('\n')
-			print '***************** PING MITEN ******************'
-			print('\n')
-			ser = serial.Serial('COM1')
-			ser.write('MITEN')		
-		return render_template('index.html')
-	elif request.method == 'GET':
-		return render_template('index.html')
+	return render_template('index.html')
 
 #-----------------------------------
 @app.errorhandler(500)
