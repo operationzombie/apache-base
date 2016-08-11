@@ -10,8 +10,9 @@ from flask import Flask, make_response, render_template, jsonify
 app = Flask(__name__)
 
 from commontools import log
+import serial, time
 
-#-----------------------------------
+#------------------------------------
 @app.route('/', methods=['POST', 'GET'])
 def index():
 	return render_template('index.html')
@@ -27,9 +28,3 @@ def internal_error(error):
 @app.errorhandler(404)
 def not_found(error):
 	return make_response(jsonify( { 'error': 'Not found' } ), 404)
-
-
-def index():	
-	return render_template('index.html')
-	
-
