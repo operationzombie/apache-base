@@ -25,8 +25,13 @@
         #mynetwork {
             width: auto;
             height: 600px;
-            /*position: absolute;*/
             border: 1px solid lightgray;
+            background-image: url("/static/images/floorplan.gif");  
+            background-size: contain;  
+            background-repeat: no-repeat;        
+        }
+        img{
+            height: 400px;
         }
     </style>
 
@@ -82,8 +87,9 @@
                         </div><!-- /.panel-heading -->
                         <div class="panel-body">
                             <div id="mynetwork"></div>
+                            
                             <script src="../static/js/network.js"></script>
-                            <!--<img src="/static/images/floorplan.gif" height="400px"/>-->
+                            
                         </div><!-- /.panel-body -->                        
                     </div>
                 </div><!-- /.col-lg-8 -->                
