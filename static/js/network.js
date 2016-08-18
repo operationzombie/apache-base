@@ -8,16 +8,16 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
 
         // create an array with nodes and sensors
         nodesBaseArray = [
-            {id: 'n1', label: 'Elsa', group: 'nodes'},
-            {id: 'n2', label: 'Belle', group: 'sensors'},
-            {id: 'n3', label: 'Aurora', group: 'sensors'}
+            {id: '1', label: 'Elsa', group: 'nodes'},
+            {id: '2', label: 'Belle', group: 'sensors'},
+            {id: '3', label: 'Aurora', group: 'sensors'}
         ];
         nodes = new vis.DataSet(nodesBaseArray);
 
         // create an array with edges
         edgesArray = [
-            {id: 'e1', from: 'n1', to: 'n2'},
-            {id: 'e2', from: 'n2', to: 'n3'}
+            {id: '1', from: '1', to: '2' },
+            {id: '2', from: '2', to: '3' }
         ];
         edges = new vis.DataSet(edgesArray);
 
@@ -59,7 +59,6 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
         //network.addEventListener('selectNode', connectNode);
         network.addEventListener('doubleClick', dblclick);
         network.addEventListener('deselectNode', deselectNode);
-        addNode(-200, -200);
     }
 
     function dblclick(data){
@@ -71,7 +70,7 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
         console.log(id + 'selected');
         var nodesWithId = nodes.get({ filter: function (item) { return item.id == id;}});
         if(nodesWithId.length!=0){
-            network.selectNodes('n1');
+            network.selectNodes(id);
             return;
         }        
     }
