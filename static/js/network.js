@@ -66,6 +66,7 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
         //addNode(data.pointer.canvas.x, data.pointer.canvas.y);
     }
 
+    //Select node or add node to canvas if not already in network
     function nodeSelect(data){
         console.log(data.id + 'selected');
         var nodesWithId = nodes.get({ filter: function (item) { return item.id == data.id;}});
@@ -79,32 +80,20 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
         addNode(data.id, data.group, data.label, 200, -200);
     }
 
+    //Add a node at this location
     function addNode(id, group, label, x, y) {
         console.log('Add Node');
         nodes.add({id:id, group: group,  label: label, x: x, y: y});
     }
 
+    //Fires when a node is deselected
     function deselectNode(data){
         if(data.nodes.length == 0){console.log('No selection'); return;}
+        //if a new node was selected at same time connect the nodes
         connectNodes(data.previousSelection.nodes[0], data.nodes[0]);
     }
 
-    function connectNode(data) {
-        console.log(doubleClickedNode + ' : ' + data.nodes[0]);
-        //Check if second selection and not the same node if so continue else return
-        if(data.nodes[0] == selectedNodeId){
-            return;
-        }
-
-        //Used to make sure only node to sensor conections are made
-        var fromSens = sensorIds.indexOf(selectedNodeId) != -1;
-        var toSens = sensorIds.indexOf(data.nodes[0]) != -1;
-        if(fromSens != toSens){
-            edges.add({from: selectedNodeId, to: data.nodes[0]});
-        }
-        selectedNodeId = data.nodes[0];
-    }
-
+    //Connects two nodes using IDs
     function connectNodes(from, to){
         //Get all edges that go to and from these two nodes
         console.log('Attempt to connect : ' + from + " : " + to);
