@@ -2,27 +2,22 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
 
     function startNetwork() {
         // this list is kept to remove a random node.. we do not add node 1 here because it's used for changes
-        nodeIds = [2, 3];
-		sensorIds = [1001, 1002, 1003];
         shadowState = false;
-        selectedNodeId = -1;
+        currentNodeId = -1;
 
 
         // create an array with nodes and sensors
         nodesBaseArray = [
-            {id: 1, label: 'Elsa'}
+            {id: 'n1', label: 'Elsa', group: 'nodes'},
+            {id: 'n2', label: 'Belle', group: 'sensors'},
+            {id: 'n3', label: 'Aurora', group: 'sensors'}
         ];
-		sensorBaseArray = [
-			{id: 1001, label: 'Belle'},
-			{id: 1002, label: 'Aurora'}
-		]
         nodes = new vis.DataSet(nodesBaseArray);
-		nodes.add(sensorBaseArray);
 
         // create an array with edges
         edgesArray = [
-            {from: 1, to: 1001},
-            {from: 2, to: 1002}
+            {id: 'e1', from: 'n1', to: 'n2'},
+            {id: 'e2', from: 'n2', to: 'n3'}
         ];
         edges = new vis.DataSet(edgesArray);
 
@@ -32,9 +27,36 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
             nodes: nodes,
             edges: edges
         };
-        var options = {nodes: {shape: 'circle'}, physics: {enabled: false}, edges: {dashes: true, smooth: {enabled: false}}};
+
+        var options = {
+            physics: {
+                enabled: false
+            },
+            edges: {
+                dashes: true, smooth: {
+                    enabled: false
+                }
+            },
+            groups: {
+                nodes: {
+                    shape: 'circle'
+                },
+                sensors: {
+                    shape: 'box',
+                    color:{
+                        background: '#ff9900',
+                        border: '#b36b00',
+                        highlight: {
+                            background: '#ffc266',
+                            border: '#b36b00'
+                        }
+                    }
+                }
+            }
+        };
+
         network = new vis.Network(container, data, options);
-        network.addEventListener('selectNode', connectNode);
+        //network.addEventListener('selectNode', connectNode);
         network.addEventListener('doubleClick', dblclick);
         network.addEventListener('deselectNode', deselectNode);
         addNode(-200, -200);
@@ -42,28 +64,34 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
 
     function dblclick(data){
         console.log('dblclick');
-        addNode(data.pointer.canvas.x, data.pointer.canvas.y);
+        //addNode(data.pointer.canvas.x, data.pointer.canvas.y);
+    }
+
+    function nodeSelect(id){
+        console.log(id + 'selected');
+        var nodesWithId = nodes.get({ filter: function (item) { return item.id == id;}});
+        if(nodesWithId.length!=0){
+            network.selectNodes('n1');
+            return;
+        }        
     }
 
     function addNode(x ,y) {
         console.log('Add Node');
-        var newId = nodeIds.length+1;
+        var newId = 'n' + (nodes.length+1);
         //while(nodeIds.contains(newId)){
          //   newId = (Math.random() * 100).toString(32);
         //}
-        nodes.add({id:newId, label:'Node '+newId, x: x, y: y});
-        nodeIds.push(newId);
+        nodes.add({id:newId, label:newId, x: x, y: y});
     }
 
     function deselectNode(data){
-        if(data.nodes.length==0){
-            console.log('deselect : ' + selectedNodeId);
-            selectedNodeId = -1;
-        }
+        if(data.nodes.length == 0){console.log('No selection'); return;}
+        connectNodes(data.previousSelection.nodes[0], data.nodes[0]);
     }
 
     function connectNode(data) {
-        console.log(selectedNodeId + ' : ' + data.nodes[0]);
+        console.log(doubleClickedNode + ' : ' + data.nodes[0]);
         //Check if second selection and not the same node if so continue else return
         if(data.nodes[0] == selectedNodeId){
             return;
@@ -78,12 +106,15 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
         selectedNodeId = data.nodes[0];
     }
 
-    function removeRandomNode() {
-        var randomNodeId = nodeIds[Math.floor(Math.random() * nodeIds.length)];
-        nodes.remove({id:randomNodeId});
-
-        var index = nodeIds.indexOf(randomNodeId);
-        nodeIds.splice(index,1);
+    function connectNodes(from, to){
+        //Get all edges that go to and from these two nodes
+        console.log('Attempt to connect : ' + from + " : " + to);
+        var edgesExist = edges.get({ filter: function (item) { return ((item.from == from && item.to == to) || (item.from == to && item.to  == from)); }});
+        console.log('Already Existing edges : ' + edgesExist);
+        //If edge already exists return
+        if(edgesExist != 0){return;}
+        //Add edge to list
+        edges.add({id: 'e'+edges.length+1, from: from, to: to});
     }
 
     function changeOptions() {
