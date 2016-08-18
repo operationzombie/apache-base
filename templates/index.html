@@ -125,8 +125,11 @@
                                     <i class="glyphicon glyphicon-scale"></i> Controllers
                                 </div>    
                                 <div class="list-group">
-                                    <a onClick="nodeSelect('1');" class="list-group-item">
+                                    <a onClick="nodeSelect({id: '1', group: 'nodes', label: 'Elsa'});" class="list-group-item">
                                         <i class="glyphicon glyphicon-screenshot"></i> Elsa
+                                    </a>
+                                    <a onClick="nodeSelect({id: '4', group: 'nodes', label: 'Ruby'});" class="list-group-item">
+                                        <i class="glyphicon glyphicon-screenshot"></i> Ruby
                                     </a>
                                 </div>
                             </div>
@@ -135,10 +138,10 @@
                                     <i class="glyphicon glyphicon-sort"></i> Routers
                                 </div>    
                                 <div class="list-group">
-                                    <a onClick="nodeSelect('2');" class="list-group-item">
+                                    <a onClick="nodeSelect({id: '2', group: 'sensors', label: 'Belle'});" class="list-group-item">
                                         <i class="glyphicon glyphicon-screenshot"></i> Belle
                                     </a>
-                                    <a onClick="nodeSelect('3');" class="list-group-item">
+                                    <a onClick="nodeSelect({id: '3', group: 'sensors', label: 'Aurora'});" class="list-group-item">
                                         <i class="glyphicon glyphicon-screenshot"></i> Aurora
                                     </a>
                                 </div>

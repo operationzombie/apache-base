@@ -66,22 +66,22 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
         //addNode(data.pointer.canvas.x, data.pointer.canvas.y);
     }
 
-    function nodeSelect(id){
-        console.log(id + 'selected');
-        var nodesWithId = nodes.get({ filter: function (item) { return item.id == id;}});
+    function nodeSelect(data){
+        console.log(data.id + 'selected');
+        var nodesWithId = nodes.get({ filter: function (item) { return item.id == data.id;}});
         if(nodesWithId.length!=0){
-            network.selectNodes(id);
+            network.selectNodes(data.id);
             return;
-        }        
+        }
+
+        //Create Node
+        //TODO add node on next click instead of at fixed locale
+        addNode(data.id, data.group, data.label, 200, -200);
     }
 
-    function addNode(x ,y) {
+    function addNode(id, group, label, x, y) {
         console.log('Add Node');
-        var newId = 'n' + (nodes.length+1);
-        //while(nodeIds.contains(newId)){
-         //   newId = (Math.random() * 100).toString(32);
-        //}
-        nodes.add({id:newId, label:newId, x: x, y: y});
+        nodes.add({id:id, group: group,  label: label, x: x, y: y});
     }
 
     function deselectNode(data){
