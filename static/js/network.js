@@ -1,5 +1,22 @@
 var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
 
+var activatedColor = {
+                        background: '#66ff66',
+                        border: '#00b300',
+                        highlight: {
+                                background: '#b3ffb3',
+                                border: '#00ff00'
+                            }
+                        };
+var sensorColor = {
+                        background: '#ff9900',
+                        border: '#b36b00',
+                        highlight: {
+                            background: '#ffc266',
+                            border: '#b36b00'
+                        }
+                    }
+
     function startNetwork() {
         // this list is kept to remove a random node.. we do not add node 1 here because it's used for changes
         shadowState = false;
@@ -43,14 +60,7 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
                 },
                 sensors: {
                     shape: 'box',
-                    color:{
-                        background: '#ff9900',
-                        border: '#b36b00',
-                        highlight: {
-                            background: '#ffc266',
-                            border: '#b36b00'
-                        }
-                    }
+                    color: sensorColor
                 }
             }
         };
@@ -78,6 +88,26 @@ var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
         //Create Node
         //TODO add node on next click instead of at fixed locale
         addNode(data.id, data.group, data.label, 200, -200);
+    }
+
+    function activateCurrentNode(){
+        var selectedNodeIds = network.getSelectedNodes();
+        if(selectedNodeIds==0){return;}
+        setNodeColor(selectedNodeIds[0], activatedColor);
+    }
+
+    function deactivateNode(nodeId){
+        nodes.update({
+            id: nodeId,
+            color: null
+        });
+    }
+
+    function setNodeColor(nodeId, color){
+        nodes.update({
+            id: nodeId,
+            color: color
+        });
     }
 
     //Add a node at this location
