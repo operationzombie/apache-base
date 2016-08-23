@@ -94,6 +94,7 @@ var sensorColor = {
         var selectedNodeIds = network.getSelectedNodes();
         if(selectedNodeIds==0){return;}
         setNodeColor(selectedNodeIds[0], activatedColor);
+        $.post('/', {command: 'Activate Node', node: selectedNodeIds[0]});
     }
 
     function deactivateNode(nodeId){
