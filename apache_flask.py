@@ -32,6 +32,7 @@ def sendMsg(msg):
 	s.listen(1)
 	conn, adr = s.accept()
 	conn.sendall(msg)
+	conn.close()
 
 def awaitMsg():
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
