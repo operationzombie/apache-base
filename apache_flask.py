@@ -11,6 +11,9 @@ import serial, socket
 
 app = Flask(__name__)
 
+from db import db
+from db import Node, Sensor, Edge
+
 from commontools import log
 import serial, time
 
@@ -19,7 +22,6 @@ HOST = ''                 # Symbolic name meaning all available interfaces
 PORT = 8082              # Arbitrary non-privileged port
 conn = None
 adr = None
-
 #Setup sending socket
 #HOST = '0.0.0.0'    # The remote host
 #PORT = 8083           # The same port as used by the server
