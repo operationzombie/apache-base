@@ -11,6 +11,7 @@ import serial, socket
 
 app = Flask(__name__)
 
+# import the database and the tables from the database
 from db import db
 from db import Node, Sensor, Edge
 
