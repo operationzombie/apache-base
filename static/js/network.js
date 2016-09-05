@@ -100,10 +100,13 @@ var sensorColor = {
     function deactivateNode(nodeId){
         nodes.update({
             id: nodeId,
-            color: null
+            color: null //null color means that the node will use group default
         });
     }
 
+    //Set specific node color
+    //nodeId: ID as stored in nodes DataSet
+    //Color should contain { background, border, highlight{ background, color } as hex strings
     function setNodeColor(nodeId, color){
         nodes.update({
             id: nodeId,
