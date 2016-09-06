@@ -29,63 +29,41 @@ adr = None
 #sender = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #sender.connect((HOST, PORT))
 
+def sendMsg(msg):
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	s.bind((HOST, PORT))
+	s.listen(1)
+	conn, adr = s.accept()
+	conn.sendall(msg)
+	conn.close()
+
+def awaitMsg():
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	s.bind((HOST, PORT))
+	s.listen(1)
+	conn, adr = s.accept()
+	data = None
+	while data != 'PONG':
+		data = conn.recv(1024)
+		if data == 'PONG':
+			conn.close()
+			return data
+	
+
 #-----------------------------------
 @app.route('/', methods=['POST', 'GET'])
 def index():    
 	if request.method == 'POST':
-		if request.form['submit'] == 'Setup':
-			print('\n')
-			print '***************** SETUP ******************'
-			print('\n')
-			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			s.bind((HOST, PORT))
-			s.listen(1)
-			conn, adr = s.accept()
-			while not conn:
-				conn, adr = s.accept()
-			#sender.sendall('PING')
+		if request.form['command'] == 'Activate Node':
+			sendMsg('Activate Node: ' + request.form['node'])
 			return render_template('index.html')
-		if request.form['submit'] == 'Ping':
-			print('\n')
-			print '***************** PINGING ******************'
-			print('\n')
-			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			s.bind((HOST, PORT))
-			s.listen(1)
-			conn, adr = s.accept()
-			conn.sendall('PING')
-			conn.recv(1024)
-			#sender.sendall('PING')
-			conn.close()
-			return render_template('index.html')
-		elif request.form['submit'] == 'Pong':
-			print('\n')
-			print '***************** WAITING FOR DATA ******************'
-			print('\n')
-			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			s.bind((HOST, PORT))
-			s.listen(1)
-			conn, adr = s.accept()
-			while True :
-				data = conn.recv(1024)
-				if data:
-					return data
 		elif request.form['submit'] == 'Ping-Pong':
 			print('\n')
 			print '***************** Ping-Pong ******************'
 			print('\n')
 			print 'WRITE PING'
-			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			s.bind((HOST, PORT))
-			s.listen(1)
-			conn, adr = s.accept()
-			conn.sendall('PING')
-			data = None
-			while data != 'PONG':
-				data = conn.recv(1024)
-				if data == 'PONG':
-					conn.close()
-					return data
+			sendMsg('PING')
+			msg = awaitMsg()
 			print 'PING PONG'
 			return render_template('index.html')
 	elif request.method == 'GET':
