@@ -10,18 +10,17 @@ services:
   - docker
 
 before_install:
-  - docker build -t operationzombie/controlserver image/
+  - docker build -t operationzombie/base image/
 
 install:
-  - docker run -d -p 80:80 --name ozc operationzombie/controlserver
+  - docker run -d -p 80:80 --name ozc operationzombie/base
 # command to run tests
 script: 
-  - docker ps | grep -q controlserver
-  - docker exec ozc python /srv/scripts/can_fetch_page.py http://localhost
+  - docker ps | grep -q base
 
 after_success:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push operationzombie/controlserver
+  - docker push operationzombie/base
 
 notifications:
   slack:
