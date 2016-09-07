@@ -59,7 +59,7 @@ def index():
 			return render_template('index.html')
 		elif request.form['submit'] == 'Ping-Pong':
 			print('\n')
-			print '***************** Ping-Pong ******************'
+			print '***************** Ping-Pong ******************')
 			print('\n')
 			print 'WRITE PING'
 			sendMsg('PING')
